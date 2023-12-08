@@ -15,16 +15,12 @@ import Modal from "./Modal";
 import Input from "./Input";
 import Button from "./Button";
 
-
-
-
-
-
 const UploaddModal = () => {
     const [isLoading, setIsLoading] = useState(false);
+
     const uploadModal = useUploadModal();
-    const { user } = useUser();
     const supabaseClient = useSupabaseClient();
+    const { user } = useUser();
     const router = useRouter();
 
     const {
@@ -38,7 +34,7 @@ const UploaddModal = () => {
             song: null,
             image: null,
         }
-    })
+    });
 
     const onChange = (open: boolean) => {
         if (!open) {
@@ -59,11 +55,8 @@ const UploaddModal = () => {
                 return;
             }
         
-            
             const uniqueID = uniqid();
-
             // Upload song
-
             const {
                 data: songData,
                 error: songError,
@@ -75,52 +68,52 @@ const UploaddModal = () => {
                     upsert: false
                 });
 
-                if (songError) {
-                    setIsLoading(false);
-                    return toast.error('Failed song upload');
-                }
+            if (songError) {
+                setIsLoading(false);
+                return toast.error('Failed song upload.');
+            }
 
-                // Upload image
-                const {
-                    data: imageData,
-                    error: imageError,
-                } = await supabaseClient
-                    .storage
-                    .from('images')
-                    .upload(`image-${values.title}-${uniqueID}`, imageFile, {
-                        cacheControl: '3600',
-                        upsert: false
-                    });
+            // Upload image
+            const {
+                data: imageData,
+                error: imageError,
+            } = await supabaseClient
+                .storage
+                .from('images')
+                .upload(`image-${values.title}-${uniqueID}`, imageFile, {
+                    cacheControl: '3600',
+                    upsert: false
+                });
 
-                    if (imageError) {
-                        setIsLoading(false);
-                        return toast.error('Failed image upload');
-                    }
+            if (imageError) {
+                setIsLoading(false);
+                return toast.error('Failed image upload');
+            }
 
-                    const {
-                        error: supabaseError
-                    } = await supabaseClient
-                        .from('songs')
-                        .insert({
-                            user_id: user.id,
-                            title: values.title,
-                            author: values.author,
-                            image_path: imageData.path,
-                            song_path: songData.path 
-                        });
+            const {
+                error: supabaseError
+            } = await supabaseClient
+                .from('songs')
+                .insert({
+                    user_id: user.id,
+                    title: values.title,
+                    author: values.author,
+                    image_path: imageData.path,
+                    song_path: songData.path 
+                });
 
-                        if (supabaseError) {
-                            setIsLoading(false);
-                            return toast.error(supabaseError.message);
-                        }
+            if (supabaseError) {
+                setIsLoading(false);
+                return toast.error(supabaseError.message);
+            }
 
-                        router.refresh();
-                        setIsLoading(false);
-                        toast.success('Song created');
-                        reset();
-                        uploadModal.onClose();
+            router.refresh();
+            setIsLoading(false);
+            toast.success('Song created!');
+            reset();
+            uploadModal.onClose();
         } catch (error) {
-            toast.error("Something went wrong")
+            toast.error("Something went wrong");
         } finally {
             setIsLoading(false);
         }
