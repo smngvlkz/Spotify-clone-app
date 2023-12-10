@@ -39,7 +39,7 @@ const upsertPriceRecord = async (price: Stripe.Price) => {
     interval: price.recurring?.interval,
     interval_count: price.recurring?.interval_count,
     trial_period_days: price.recurring?.trial_period_days,
-    metadata: price.metadata
+    metadat: price.metadata
   };
 
   const { error } = await supabaseAdmin.from('prices').upsert([priceData]);
@@ -86,7 +86,7 @@ const copyBillingDetailsToCustomer = async (
   const { name, phone, address } = payment_method.billing_details;
   if (!name || !phone || !address) return;
   
-  await stripe.customers.update(customer, { name, phone, address });
+  await stripe.customers.update(customer, { name, phone });
   const { error } = await supabaseAdmin
     .from('users')
     .update({
@@ -120,9 +120,7 @@ const manageSubscriptionStatusChange = async (
       id: subscription.id,
       user_id: uuid,
       metadata: subscription.metadata,
-      status: subscription.status,
       price_id: subscription.items.data[0].price.id,
-      quantity: subscription.quantity,
       cancel_at_period_end: subscription.cancel_at_period_end,
       cancel_at: subscription.cancel_at
         ? toDateTime(subscription.cancel_at).toISOString()
