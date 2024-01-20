@@ -1,36 +1,19 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Technical Achievements
 
-## Getting Started
+This project is aimed to showcase my skills in building a full-stack web app that imitates the functionality and design of Spotify, a popular music streaming platform for your local files. 
 
-First, run the development server:
+## Problems Faced and Solutions
+Authentication:
+I wanted to create a secure and user-friendly authentication system for the app, which would allow users to sign in, create their Spotify accounts, and access their data and playlists locally. However, I faced some challenges with Next.js while handling the OAuth 2.0 flow and storing user data. To overcome these challenges, I decided to use Clerk, a platform that provides authentication and user management for web applications. Clerk offers various authentication methods, including passwords, email codes, OAuth, and more. It also provides pre-built UI components such as sign-in, sign-up, and user profile, which can be customized and themed to match my branding. I integrated Clerk with Next.js using Clerk's SDK and React hooks.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Real-time data:
+I wanted to make the app more interactive and responsive by allowing users to see the current playing track and control the playback. However, I faced some difficulties in implementing real-time data updates and communication. To overcome these challenges, I used a JavaScript library that allows you to create a custom player. I created a custom player component that can play, pause, skip, shuffle, repeat, and adjust the volume of the music.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Frontend development: 
+I utilized Next.js, to create the front end of the app. I used React hooks and custom components to generate a dynamic and responsive user interface. Additionally, I used Tailwind CSS and Shadcn-ui, to style the app and make it look like the original Spotify platform. Tailwind CSS allowed me to create custom designs without writing any CSS.  Shadcn-ui library provided me with ready-made components and icons that were compatible with Tailwind CSS. 
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Backend development: 
+I used Supabase, to handle the backend logic and data storage of the app. I integrated PostgreSQL, with Supabase to store and query the music data. 
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Deployment: 
+I deployed the app on Vercel. I configured the app to use environment variables and secrets to store the API keys and credentials. I also enabled HTTPS and SSL encryption to ensure the security and privacy of the app and its users.
