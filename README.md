@@ -21,4 +21,8 @@ I deployed the app on Vercel. I configured the app to use environment variables 
 ## Demo and Snippet
 
 Here are some of caputerd demo and snippet of the app
-https://github.com/smngvlkz/spotify-clone/assets/125494888/4fe25286-2d5d-4eec-b7c6-4027cf9572bd
+
+
+
+https://github.com/smngvlkz/spotify-clone/assets/125494888/de72f23f-0687-4d55-86c0-8212212896db
+
