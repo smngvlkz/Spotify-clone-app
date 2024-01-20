@@ -17,3 +17,8 @@ I used Supabase, to handle the backend logic and data storage of the app. I inte
 
 ## Deployment: 
 I deployed the app on Vercel. I configured the app to use environment variables and secrets to store the API keys and credentials. I also enabled HTTPS and SSL encryption to ensure the security and privacy of the app and its users.
+
+## Demo and Snippet
+
+Here are some of caputerd demo and snippet of the app
+https://github.com/smngvlkz/spotify-clone/assets/125494888/4fe25286-2d5d-4eec-b7c6-4027cf9572bd
